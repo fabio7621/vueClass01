@@ -17,12 +17,28 @@
           </td>
           <td>{{ item.price }}</td>
           <td>
-            <button @click.prevent="item.qty--" type="button">-</button>
+            <button class="btn bg-info" @click.prevent="item.qty--" type="button">
+              <i class="bi bi-dash"></i>
+            </button>
             {{ item.qty }}
-            <button @click.prevent="item.qty++" type="button">+</button>
+            <button class="btn bg-info" @click.prevent="item.qty++" type="button">
+              <i class="bi bi-plus"></i>
+            </button>
           </td>
         </tr>
       </template>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping"
+          ><i class="bi bi-currency-bitcoin"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Toatal"
+          aria-label="Username"
+          aria-describedby="addon-wrapping"
+        />
+      </div>
     </tbody>
   </table>
 </template>
