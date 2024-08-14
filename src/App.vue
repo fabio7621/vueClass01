@@ -47,11 +47,11 @@
     <tr>
       <td>
         <label for="teaPrice">價錢</label>
-        <input v-model="tempDrin.price" id="teaPrice" type="number" min="0" />
+        <input v-model="tempDrin.price" id="teaPrice" type="number" min="0" @input="checkNumber" />
       </td>
       <td>
         <label for="teaQty">數量</label>
-        <input v-model="tempDrin.qty" id="teaQty" type="number" min="0" @input="checkQty" />
+        <input v-model="tempDrin.qty" id="teaQty" type="number" min="0" @input="checkNumber" />
       </td>
     </tr>
   </table>
@@ -115,8 +115,8 @@ const resetTempDrink = () => {
   tempDrin.value.qty = 1
 }
 
-const checkQty = () => {
-  let qty = parseInt(tempDrin.value.qty, 10)
+const checkNumber = () => {
+  let qty = parseInt(tempDrin.value.qty)
 
   if (isNaN(qty) || qty < 0) {
     tempDrin.value.qty = 0
