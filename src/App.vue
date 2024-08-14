@@ -18,7 +18,7 @@
           </td>
           <td>{{ item.price }}</td>
           <td>
-            <button class="btn bg-info" @click.prevent="item.qty--" type="button">
+            <button class="btn bg-info" @click.prevent="item.qty > 0 && item.qty--" type="button">
               <i class="bi bi-dash"></i>
             </button>
             {{ item.qty }}
@@ -51,7 +51,7 @@
       </td>
       <td>
         <label for="teaQty">數量</label>
-        <input v-model="tempDrin.qty" id="teaQty" type="number" min="0" />
+        <input v-model="tempDrin.qty" id="teaQty" type="number" min="0" @input="checkQty" />
       </td>
     </tr>
   </table>
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const tempDrin = ref({
   id: null,
@@ -113,5 +113,11 @@ const resetTempDrink = () => {
   tempDrin.value.content = ''
   tempDrin.value.price = 0
   tempDrin.value.qty = 1
+}
+
+const checkQty = () => {
+  if (tempDrin.value.qty < 0) {
+    tempDrin.value.qty = 0
+  }
 }
 </script>
