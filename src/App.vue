@@ -116,8 +116,12 @@ const resetTempDrink = () => {
 }
 
 const checkQty = () => {
-  if (tempDrin.value.qty < 0) {
+  let qty = parseInt(tempDrin.value.qty, 10)
+
+  if (isNaN(qty) || qty < 0) {
     tempDrin.value.qty = 0
+  } else {
+    tempDrin.value.qty = qty
   }
 }
 </script>
